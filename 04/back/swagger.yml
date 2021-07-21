@@ -1,0 +1,174 @@
+swagger: '2.0'
+info:
+  title: 'front-tasks/04/back'
+  description: 'Back-end для четвертого учебного задания «Javascript для front-end разработки»'
+  version: '1.0.0'
+host: 'localhost:80'
+basePath: '/js-hw-api'
+schemes:
+  - 'http'
+tags:
+  - name: 'articles'
+    description: 'Articles'
+paths:
+  /articles.php:
+    post:
+      tags:
+        - 'articles'
+      summary: 'Create'
+      description: 'Create Article'
+      operationId: 'createEpt'
+      consumes:
+        - 'multipart/form-data'
+      produces:
+        - 'application/json'
+      parameters:
+        - in: 'formData'
+          name: 'title'
+          type: 'string'
+        - in: 'formData'
+          name: 'content'
+          type: 'string'
+      responses:
+        '200':
+          description: 'Ok'
+          schema:
+            $ref: '#/definitions/ResArticle'
+        '400':
+          description: 'Bad request'
+          schema:
+            $ref: '#/definitions/Message'
+        '403':
+          description: 'Not authorized'
+          schema:
+            $ref: '#/definitions/Message'
+      security:
+        - api_key: []
+
+    get:
+      tags:
+        - 'articles'
+      summary: 'Read'
+      description: 'Read Article'
+      operationId: 'readEpt'
+      produces:
+        - 'application/json'
+      parameters:
+        - in: 'query'
+          name: 'id'
+          type: 'string'
+      responses:
+        '200':
+          description: 'Ok'
+          schema:
+            $ref: '#/definitions/ResArticle'
+        '404':
+          description: 'Аrticle not found'
+          schema:
+            $ref: '#/definitions/Message'
+
+    put:
+      tags:
+        - 'articles'
+      summary: 'Update'
+      description: 'Update Article'
+      operationId: 'updateEpt'
+      consumes:
+        - 'application/json'
+      produces:
+        - 'application/json'
+      parameters:
+        - in: 'body'
+          name: 'body'
+          schema:
+            type: 'object'
+            properties:
+              id:
+                type: 'string'
+              title:
+                type: 'string'
+              content:
+                type: 'string'
+      responses:
+        '200':
+          description: 'Ok'
+          schema:
+            $ref: '#/definitions/ResArticle'
+        '400':
+          description: 'Bad request'
+          schema:
+            $ref: '#/definitions/Message'
+        '403':
+          description: 'Not authorized'
+          schema:
+            $ref: '#/definitions/Message'
+        '404':
+          description: 'Аrticle not found'
+          schema:
+            $ref: '#/definitions/Message'
+      security:
+        - api_key: []
+
+    delete:
+      tags:
+        - 'articles'
+      summary: 'Delete'
+      description: 'Delete Article'
+      operationId: 'deleteEpt'
+      produces:
+        - 'application/json'
+      parameters:
+        - in: 'query'
+          name: 'id'
+          type: 'string'
+      responses:
+        '200':
+          description: 'Ok'
+          schema:
+            $ref: '#/definitions/ResArticle'
+        '400':
+          description: 'Bad request'
+          schema:
+            $ref: '#/definitions/Message'
+        '403':
+          description: 'Not authorized'
+          schema:
+            $ref: '#/definitions/Message'
+        '404':
+          description: 'Аrticle not found'
+          schema:
+            $ref: '#/definitions/Message'
+      security:
+        - api_key: []
+
+securityDefinitions:
+  api_key:
+    in: 'header'
+    name: 'Authorization'
+    type: 'apiKey'
+
+definitions:
+  Article:
+    type: 'object'
+    properties:
+      id:
+        type: 'string'
+        format: uuid
+      title:
+        type: 'string'
+      text:
+        type: 'string'
+      dt:
+        type: 'string'
+  ResArticle:
+    type: 'object'
+    properties:
+      res:
+        $ref: '#/definitions/Article'
+  Message:
+    type: 'object'
+    properties:
+      messages:
+        type: 'array'
+        items:
+          type: 'string'

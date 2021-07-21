@@ -1,0 +1,31 @@
+{
+  "dependencies": {
+    "fastify": "^3.14.0",
+    "fastify-error": "^0.3.0",
+    "fastify-multipart": "^4.0.0",
+    "json-schema-to-ts": "^1.6.0",
+    "md5": "^2.3.0",
+    "nanoid": "^3.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.0",
+    "@babel/node": "^7.13.0",
+    "@babel/preset-env": "^7.13.0",
+    "@babel/preset-typescript": "^7.13.0",
+    "@types/busboy": "^0.2.0",
+    "@types/md5": "^2.3.0",
+    "@types/node": "^14.14.0",
+    "@types/supertest": "^2.0.0",
+    "nodemon": "^2.0.0",
+    "supertest": "^6.1.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "name": "front-tasks-05-back",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon --exec babel-node -- --extensions .ts ./index.ts",
+    "start": "babel-node --extensions .ts ./index.ts"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "devDependencies": {
+    "@babel/core": "^7.13.0",
+    "@babel/node": "^7.13.0",
+    "@babel/preset-env": "^7.13.0",
+    "@babel/preset-typescript": "^7.13.0",
+    "@tsconfig/recommended": "^1.0.0",
+    "@types/jest": "^26.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.23.0",
+    "@typescript-eslint/parser": "^4.23.0",
+    "babel-jest": "^26.6.0",
+    "eslint": "^7.26.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.0",
+    "eslint-plugin-node": "^11.1.0",
+    "jest": "^26.6.0",
+    "typescript": "^4.2.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "name": "frnt-nd-tasks",
+  "private": true,
+  "scripts": {
+    "test": "jest --coverage"
+  }
+}
